@@ -1,11 +1,11 @@
 import { Button, InputNumber, Input, message } from "antd";
 import { useState, useRef } from "react";
-// import { useStocks } from "./StockContext";
+import { useStocks } from "./StockContext";
 import "./StockForm.css";
 
 const StockForm = () => {
-  // const { addStock } = useStocks();
-  const token = "bThqd1hEWFJBanR2cFhucUlOMVllWEVieVBJdExVZUNCYm5vSl84NGxvTT0"
+  const { addStock } = useStocks();
+  const token = "bThqd1hEWFJBanR2cFhucUlOMVllWEVieVBJdExVZUNCYm5vSl84NGxvTT0";
 
   const [symbol, setSymbol] = useState("");
   const [price, setPrice] = useState(null);
@@ -22,11 +22,11 @@ const StockForm = () => {
     try {
       const response = await fetch(
         // The following for Stock API
-        `https://api.marketdata.app/v1/stocks/quotes/${symbol}/?token=${token}`
+        `https://api.marketdata.app/v1/stocks/quotes/${symbol}/?token=${token}`,
       );
       const data = await response.json();
       console.log("API response data:", data);
-      const valid = data["symbol"] 
+      const valid = data["symbol"];
 
       setIsSymbolValid(valid ? true : false);
       return valid ? true : false;
@@ -77,7 +77,7 @@ const StockForm = () => {
     if (hasError) return;
 
     setLoading(true);
-    
+
     addStock({
       symbol: symbol.trim().toUpperCase(),
       purchasePrice: price,
