@@ -84,9 +84,6 @@ const StockForm = () => {
       quantity,
     });
 
-    // const stockData = { symbol, price, quantity };
-    // console.log("Validated stock:", stockData);
-
     message.success("Stock added successfully");
 
     resetAll();
