@@ -1,0 +1,17 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: left;
+}
+
+.logo {
+  height: 10em;
+  padding: 0em;
+  margin: 0 0 -3em 0;
+}
+.h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  margin-top: -1rem;
+}
