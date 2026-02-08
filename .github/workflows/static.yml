@@ -37,17 +37,15 @@ jobs:
           # cache: "npm"
       - name: Install dependencies
         run: npm ci
-        working-directory: ./se100-kwangweewen-capstone
       - name: Build
         run: npm run build
-        working-directory: ./se100-kwangweewen-capstone
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload dist folder
-          path: "./dist/se100-kwangweewen-capstone"
+          path: "./dist"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
