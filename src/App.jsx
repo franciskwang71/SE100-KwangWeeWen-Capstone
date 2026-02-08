@@ -1,23 +1,50 @@
 import React from "react";
 import "./App.css";
 import StockForm from "./StockForm";
-// import StockList from "./StockList";
+import StockList from "./StockList";
 import logo from "./assets/capstone.svg";
-// import { StockProvider } from "./StockContext";
+import { StockProvider } from "./StockContext";
 
 function App() {
   return (
-    <div>
-        <img src={logo} alt="Capstone Logo" className="logo" />
-        <h1>Stock Portfolio</h1>
-        <div>
+    <StockProvider>
+      <AppLayout>
+        <Header />
+        <Section title="New Investment">
           <StockForm />
-        </div>
-        <h2>Stock List</h2>
-        <div>
-          <p>To be added later</p>
-        </div>{" "}
-      </div>
+        </Section>
+        <Section title="Stock Portfolio">
+          <StockList />
+        </Section>
+      </AppLayout>
+    </StockProvider>
   );
 }
+
 export default App;
+
+// ----------------------
+// Subcomponents
+// ----------------------
+
+function AppLayout({ children }) {
+  return <main className="app-container">{children}</main>;
+}
+
+function Header() {
+  return (
+    <header className="app-header">
+      <img src={logo} alt="Capstone Logo" className="logo" />
+      <h1>Investment Dashboard</h1>
+    </header>
+  );
+}
+
+function Section({ title, children }) {
+  return (
+    <section className="app-section">
+      <h2>{title}</h2>
+      {children}
+    </section>
+  );
+}
